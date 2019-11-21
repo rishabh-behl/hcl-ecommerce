@@ -40,5 +40,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/shubhamm/Downloads/gson-2.3.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient-osgi/4.5.2/httpclient-osgi-4.5.2.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient-osgi/4.5.2/httpclient-osgi-4.5.2-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore-osgi/4.4.5/httpcore-osgi-4.4.5.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpcore-osgi/4.4.5/httpcore-osgi-4.4.5-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
