@@ -101,10 +101,10 @@ public class CartServlet extends SlingSafeMethodsServlet{
 					else{
 						/*Sample Payload:
 						payload_add
-						{ "cartItem": { "quote_id": "rMFSYyqeTXGOqj4s7A9QRs9AVaLAMC9T", "sku": "24-MB01", "qty": 14} }
+						{ "cartItem": { "quote_id": "VbfYhqDHXyDcx1MlTUg9jJzEC3bso2ug", "sku": "24-MB01", "qty": 14} }
 						
 						payload_update
-						{ "cartItem": { "quote_id": "rMFSYyqeTXGOqj4s7A9QRs9AVaLAMC9T", "sku": "24-MB01", "qty": 14, "item_id":14} }				
+						{ "cartItem": { "quote_id": "rMFSYyqeTXGOqj4s7A9QRs9AVaLAMC9T", "sku": "24-MB01", "qty": 10, "item_id":5} }				
 						*/
 						StringEntity input = new StringEntity(payload);
 						
