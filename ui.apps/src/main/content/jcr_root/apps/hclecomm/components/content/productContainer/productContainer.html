@@ -1,0 +1,92 @@
+<span> <sly data-sly-test="${wcmmode.edit}"> ${wcmmode.edit}  </sly></span>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='hclecomm.productContainer'}" />
+
+<div id="slickSlider" data-ride="carousel">
+          <div class="carousel-inner">
+			<sly data-sly-use.model="com.hcl.ecomm.core.models.ProductContainerModel" data-sly-unwrap>
+            <div class="container">
+			<div class="row" >
+				<div data-sly-list.column = "${model.columnCtrl.listChildren}" data-sly-unwrap>
+
+									<sly data-sly-test="${column.columnCtrl=='col-12'}" data-sly-unwrap>
+										<sly data-sly-test="${wcmmode.edit}">
+
+											<div class="col-md-12">
+												<div data-sly-resource="${ @path='headerparsys', resourceType='wcm/foundation/components/iparsys'}"></div>
+                                                <sly data-sly-resource="par1_${ 1 @ resourceType='/libs/foundation/components/parsys'}" />
+											</div>	
+										</sly>
+										<sly data-sly-test="${wcmmode.preview || wcmmode.disabled}">
+											<div class="carousel-item">
+											<div class="col-md-12">
+												<sly data-sly-resource="par1_${1 @ resourceType='/libs/foundation/components/parsys'}" />
+											</div>	
+											</div>
+										</sly>
+									</sly>
+									<sly data-sly-test="${column.columnCtrl=='6-6-col'}" data-sly-unwrap>
+										<sly data-sly-test="${wcmmode.edit}">
+												<div class="col-md-6 col-lg-6">
+													<sly data-sly-resource="par1_${ 2 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-6 col-lg-6">
+													<sly data-sly-resource="par2_${2 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+                                                <div class="clearfix"></div>
+										</sly>
+										<sly data-sly-test="${wcmmode.preview || wcmmode.disabled}">
+											<div class="carousel-item">
+												<div class="col-md-6 col-lg-6">
+													<sly data-sly-resource="par1_${2  @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-6 col-lg-6">
+													<sly data-sly-resource="par2_${2  @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+											</div>
+										</sly>
+									</sly>
+									<sly data-sly-test="${column.columnCtrl=='4-4-4-col'}" data-sly-unwrap>
+										<sly data-sly-test="${wcmmode.edit}">
+
+												<div class="col-md-4">
+													<sly data-sly-resource="par1_${3  @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-4">
+													<sly data-sly-resource="par2_${3 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-3">
+													<sly data-sly-resource="par3_${3 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+
+										</sly>
+										<sly data-sly-test="${wcmmode.preview || wcmmode.disabled}">
+											<div class="carousel-item">
+												<div class="col-md-4">
+													<sly data-sly-resource="par1_${ 3 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-4">
+													<sly data-sly-resource="par2_${3 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+												<div class="col-md-3">
+													<sly data-sly-resource="par3_${3 @ resourceType='/libs/foundation/components/parsys'}" />
+												</div>
+											</div>
+										</sly>
+									</sly>
+					</div>
+
+				</div>
+                </div>
+			</sly>
+		</div>
+          <a class="carousel-control-prev" href="#slickSlider" role="button" data-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#slickSlider" role="button" data-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+           </a>
+      </div>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <ColumnCtrl
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Column Control">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./columnCtrl">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <Column_x0020_Ctrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:orderBefore="linkItems"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Column Control"
+                                            name="./columnCtrl">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <col-12
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="1 column"
+                                                    value="col-12"/>
+                                                <col-6-6
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="2 Columns"
+                                                    value="6-6-col"/>
+                                                <col-4-4-4
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="3 Columns"
+                                                    value="4-4-4-col"/>
+                                            </items>
+                                        </Column_x0020_Ctrl>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </ColumnCtrl>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
