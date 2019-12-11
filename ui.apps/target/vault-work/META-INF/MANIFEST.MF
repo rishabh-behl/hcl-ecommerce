@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: hclecomm - UI apps
+Content-Package-Roots: /apps/hclecomm
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: DeepaliA
+Implementation-Vendor-Id: com.hcl.ecomm
+Content-Package-Type: application
+Created-By: Apache Maven
+Build-Jdk: 1.8.0_172
+Content-Package-Description: UI apps package for hclecomm
+Content-Package-Id: com.hcl.ecomm:hclecomm.ui.apps:1.0-SNAPSHOT
+

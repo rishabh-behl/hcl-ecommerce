@@ -1,0 +1,41 @@
+<sly data-sly-test.index="${0 @ context='number'}"/>
+
+
+<!-- Carousel Component Starts -->
+      <div id="slickSlider" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators" data-sly-list="${ [1,2,3] }">
+                  <li data-target="#slickSlider" data-slide-to="${itemList.index}" class="${itemList.index == 0 ? 'active' : ''}"></li>
+
+              </ol>
+          <div class="carousel-inner" data-sly-list="${ [1,2,3] }">
+              <div  class="carousel-item ${itemList.index == 0 ? 'active' : ''}">
+                  <div class="row sliderImg justify-content-md-center" >
+
+
+
+<sly data-sly-list="${ ['24-MB01','24-MB04'] }">
+
+                      <div class="col-md-5" data-product-sku="${item}">
+                          <img src="/content/dam/hclecomm/SEP-ProductOverview.svg" alt="...">
+                              <div class="carousel-caption d-none d-md-block" >
+                                <p>Product Name : <span class= "pName">Sample Name</span> </p>
+						
+						<p>Product Price : <span class = "pPrice">0.0</span></p> 
+                            </div>
+                      </div>
+
+</sly>
+
+                  </div>
+              </div>
+           </div>
+          <a class="carousel-control-prev" href="#slickSlider" role="button" data-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#slickSlider" role="button" data-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+           </a>
+      </div>
+     <!--   Carousel Component ends -->

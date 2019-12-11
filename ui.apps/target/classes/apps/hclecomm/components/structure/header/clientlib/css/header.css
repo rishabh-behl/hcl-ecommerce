@@ -1,0 +1,191 @@
+body{
+          overflow-x: hidden;
+       }
+      .header {
+        background-color: #8CD0E3;
+        top: 0;
+        z-index: 20;
+        overflow: visible;
+        position: relative;
+        height: 92px;
+      }
+      .header .header-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 92px;
+        width: 100%;
+        background-color: inherit;
+      }
+      .header-logo {
+        font-size: 0;
+        text-align: center;
+        display: block;
+        margin: 0;
+        padding: 13px 0 11px;
+        position: relative;
+        z-index: 20;
+      }
+
+      .header-logo>a {
+        display: inline-block;
+        margin: 0 auto;
+        background-image: url(../SVG/hcl_logo_white_1.png);
+        background-size: contain;
+        background-position: center center;
+        border: none;
+        background-repeat: no-repeat;
+        width: 101px;
+        height: 35px;
+      }
+      .navPages>ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .navPages>ul>li {
+        margin: 0 10px 0 0;
+        display: inline-block;
+      }
+      .navPages>ul>li>a {
+        padding: 0 20px;
+      }
+      .navPages-item a {
+        position: relative;
+      }
+      .navPages-action {
+          color: #fff;
+          display: block;
+          font-size: 15px;
+          font-weight: 600;
+          text-decoration: none;
+          text-transform: uppercase;
+      }
+      .navPage-subMenu {
+          display: none;
+          outline: 0;
+          font-size: 13px;
+          background-color: #e3f6fa;
+          padding: 40px 120px 40px 108px;
+      }
+
+      .navPages-item:hover>div {
+          display: block;
+      }
+
+      .navPages .navPage-subMenu-list .navPages-action {
+          color: #000;
+      }
+
+      .navPage-subMenu .navPage-subMenu-action {
+          font-weight: 500;
+          position: relative;
+      }
+
+      #cart-preview-dropdown .previewCartList .previewCartItem, .navPage-subMenu:hover{
+          -ms-flex-direction: row;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+      }
+      .navPages-item>.navPages-action:hover {
+          position: relative;
+      }
+      .navPages-item:active>.navPages-action, .navPages-item:hover>.navPages-action {
+          color: #f5ea77;
+      }
+
+      .navPages {
+          height: 100%;
+          margin: 0 auto;
+          max-width: 100rem;
+          width: 100%;
+          background: 0 0;
+          font-size: 0;
+          overflow-y: visible;
+          text-align: center;
+          padding: 0 0 12px;
+      }
+
+      .navPage-subMenu {
+          left: 0;
+          width: 100%;
+          position: absolute;
+          text-align: left;
+          top: 92px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: row;
+          overflow: hidden
+      }
+
+      .navPages-action {
+          color: #fff;
+          display: block;
+          font-size: 15px;
+          font-weight: 600;
+          text-decoration: none;
+          text-transform: uppercase;
+      }
+
+      .navPages-item:hover>.navPages-action:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-left: 20px solid transparent;
+          border-right: 20px solid transparent;
+          border-top: 20px solid #73d2e6;
+          -webkit-transform: translate(-50%,100%);
+          transform: translate(-50%,100%);
+          z-index: 20;
+      }
+      .navPages-item a:after {
+          content: '/';
+          display: inline-block;
+          position: absolute;
+          right: -10px;
+          bottom: 0;
+          margin: 0;
+          color: #fff!important;
+      }
+      .navPages-item:last-child a:after{
+        content: none;
+      }
+      .navPages-action, .navPages-item {
+          display: block;
+      }
+
+      .navPage-subMenu {
+          display: none;
+          outline: 0;
+          font-size: 13px;
+          background-color: #e3f6fa;
+          padding: 40px 120px 40px 108px;
+      }
+
+      @media (min-width: 801px){
+        .navPages .navPage-subMenu-list {
+              max-width: 75rem;
+              width: 100%;
+              border-left: 0;
+              margin: auto;
+              padding-left: 0;
+        }
+        .navPage-subMenu-item {
+            width: 33.33333%;
+            float: left;
+            padding: 14px;
+            list-style: none;
+        }
+        .navPage-subMenu-item .navPages-action {
+            text-transform: none;
+            width: 100%;
+        }
+
+        .navPages-list {
+            display: inline-block;
+            float: none;
+        }
+      }

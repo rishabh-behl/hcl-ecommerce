@@ -1,0 +1,52 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='hclecomm.productDescriptionPQR'}" />
+
+
+<section class="product-detail">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="fit-img"src="./SVG/product.jpg">
+            </div>
+            <div class="col-md-6">
+              <h1 id="name">SEPC product Heading</h1>
+              <p id="subTitle">High-intensity & Fast-absorbing Hydrator</p>
+              <div class="long-description" class="hidden-xs" id="description">
+                <ul>
+                  <li>This ultra-rich moisturizer absorbs instantly for silky smooth and supremely soft, never-greasy hands.</li>
+                  <li>Smooths rough cuticles</li>
+                  <li>Non-greasy and fast-absorbing</li>
+                  <li>Supremely scented with our iconic Lemon &amp; Sage fragrance for an energizing pick-me-up</li>
+                </ul>
+              </div>
+              <div class="text-wrapper">
+                <span class="price-withoutTax" id="price">$5.00</span>
+                <span class="text-up">per Licence</span>
+              </div>
+
+              <div class="form-wrapper">
+                  <div data-product-option-change="" style="" class="product-options">
+                      <div class="form-field form-field--increments">
+                          <label>Qty:</label>
+                          <div class="form-increment" data-quantity-change="">
+                              <button class="button button--icon nograd" data-action="dec">
+                                  <i class="icon minus" aria-hidden="true"></i>
+                              </button>
+                              <input class="form-input form-input--incrementTotal" id="qty[]" name="qty[]" type="tel" value="1" data-quantity-min="0" data-quantity-max="10" min="1" pattern="[0-9]*" aria-live="polite">
+                              <button class="button button--icon nograd" data-action="inc">
+                                  <i class="icon plus" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="btn-buy">
+                      <a href="${properties.button1link}">${properties.button1text}</a>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
