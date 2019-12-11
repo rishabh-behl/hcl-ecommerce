@@ -4,6 +4,8 @@
     <jcr:content
         cq:contextHubPath="/etc/cloudsettings/default/contexthub"
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
+        cq:lastModified="{Date}2019-12-11T12:33:13.898+05:30"
+        cq:lastModifiedBy="admin"
         cq:template="/conf/hclecomm/settings/wcm/templates/basepage-template"
         jcr:primaryType="cq:PageContent"
         jcr:title="en"

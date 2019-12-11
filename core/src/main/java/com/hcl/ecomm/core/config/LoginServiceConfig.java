@@ -7,35 +7,40 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 @ObjectClassDefinition(name="Login Service Configuration")
 public @interface LoginServiceConfig {
 
+	String servicePathDefaultValue = "/V1/integration/admin/token";
+	String domainNameDefaultValue = "localhost:8081/magento/rest";
+	String userNameDefaultValue = "admin";
+	String passwordDefaultValue = "Admin123";
+	
 	@AttributeDefinition(
 			name="DOMAIN_NAME",
 			description="This is domain name",
-			defaultValue="localhost:8081/magento/rest",
+			defaultValue=domainNameDefaultValue,
 			type=AttributeType.STRING
 			)	
-	String loginservice_domainName_string();
+	String loginservice_domainName_string() default domainNameDefaultValue;
 	
 	@AttributeDefinition(
 			name="SERVICE_PATH",
 			description="This is the API path",
-			defaultValue="/V1/integration/admin/token",
+			defaultValue=servicePathDefaultValue,
 			type=AttributeType.STRING
 			)
-	String loginservice_servicePath_string();
+	String loginservice_servicePath_string() default servicePathDefaultValue;
 	
 	@AttributeDefinition(
 			name="USERNAME",
 			description="USERNAME",
-			defaultValue="admin",
+			defaultValue=userNameDefaultValue,
 			type=AttributeType.STRING
 			)	
-	String loginservice_username_string();
+	String loginservice_username_string() default userNameDefaultValue;
 	
 	@AttributeDefinition(
 			name="PASSWORD",
 			description="PASSWORD",
-			defaultValue="Admin123",
+			defaultValue=passwordDefaultValue,
 			type=AttributeType.STRING
 			)	
-	String loginservice_password_string();
+	String loginservice_password_string() default passwordDefaultValue;
 }
