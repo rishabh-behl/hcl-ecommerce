@@ -1,6 +1,10 @@
 package com.hcl.ecomm.core.services.impl;
 
-
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.propertytypes.ServiceDescription;
@@ -45,5 +49,41 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public String getPassword() {
 		return this.config.loginservice_password_string();
+	}
+
+	@Override
+	public String getToken() {
+
+		String scheme = "http";
+		String token = null;
+		
+		String domainName = getDomainName();
+		String servicePath = getServicePath();
+		String username = getUsername();
+		String password = getPassword();
+
+		String url = scheme + "://" + domainName + servicePath + "?username=" + username + "&password=" + password;
+		LOG.info("URL formed : " + url);
+
+		try {
+
+			LOG.info("inside LoginServiceImpl getToken method ");
+
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+
+			HttpPost httppost = new HttpPost(url);
+			LOG.info("httPut : "+httppost);
+			CloseableHttpResponse httpResponse = httpClient.execute(httppost);
+			LOG.info("httpResponse : " +httpResponse);
+			token = EntityUtils.toString(httpResponse.getEntity());
+			LOG.info("Response Token : " + token);
+
+		} catch (Exception e) {
+			LOG.error("getToken method caught an exception "+e.getMessage());
+			e.printStackTrace();
+
+		}
+
+		return token;
 	}
 }

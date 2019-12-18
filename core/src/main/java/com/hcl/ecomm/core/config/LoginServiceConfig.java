@@ -3,7 +3,7 @@ package com.hcl.ecomm.core.config;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-@ObjectClassDefinition(name = "ABCD", description = "Component Usage Report Configurations")
+@ObjectClassDefinition(name = "Login Service", description = "Component Usage Report Configurations")
 public @interface LoginServiceConfig {
 
 	String servicePathDefaultValue = "/V1/integration/admin/token";

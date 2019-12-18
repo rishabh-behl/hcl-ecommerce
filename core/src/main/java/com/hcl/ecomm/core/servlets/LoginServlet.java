@@ -35,14 +35,7 @@ public class LoginServlet extends SlingSafeMethodsServlet{
 	private static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);	
 	
 	@Reference
-	private LoginService loginService;
-	
-	private String scheme = "http";
-	
-	String domainName;
-	String servicePath;
-	String username;
-	String password;
+	private LoginService loginService;	
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
@@ -50,19 +43,10 @@ public class LoginServlet extends SlingSafeMethodsServlet{
 		
 		LOG.info("loginService : " + loginService);
 		
-		domainName = loginService.getDomainName();
-		servicePath = loginService.getServicePath();
-		username = loginService.getUsername();
-		password = loginService.getPassword();		
+		String token = loginService.getToken();		
+		response.getWriter().append("Token Value : "+token);
 		
-		String url = scheme + "://" + domainName + servicePath + "?username=" + username + "&password=" + password;
-		LOG.info("URL formed : " + url);
-		
-		String token = getToken(url);
-		request.setAttribute("token", token);
-		LOG.info("token formed : " + token);		
-		
-		String uri=request.getRequestURI();
+		/*String uri=request.getRequestURI();
 		if(uri.equals("/bin/hclecomm/products.json")){
 			RequestDispatcher rd = request.getRequestDispatcher("/bin/hclecomm/products");		
 			rd.include(request,response);
@@ -77,31 +61,8 @@ public class LoginServlet extends SlingSafeMethodsServlet{
 		}
 		else{
 			response.getWriter().append("Token Value : "+token);
-		}
+		}*/
 	}
 	
-	protected String getToken(String path){
-		
-		String response = null;
-		try {
-			
-			LOG.info("inside getToken method ");
-			
-			CloseableHttpClient httpClient = HttpClients.createDefault();
-			
-			HttpPost httppost = new HttpPost(path);
-			//LOG.info("httPut : "+httppost);
-			CloseableHttpResponse httpResponse = httpClient.execute(httppost);
-			//LOG.info("httpResponse : " +httpResponse);			
-			response = EntityUtils.toString(httpResponse.getEntity());
-			LOG.info("Response Token : " + response);
-			
-		} catch (Exception e) {			
-			LOG.error("getToken method caught an exception");
-			e.printStackTrace();
-			
-		}
-		
-		return response;
-	}
+	
 }

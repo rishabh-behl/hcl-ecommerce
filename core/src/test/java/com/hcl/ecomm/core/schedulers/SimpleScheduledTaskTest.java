@@ -46,7 +46,7 @@ class SimpleScheduledTaskTest {
     @Test
     void run() {
         SimpleScheduledTask.Config config = mock(SimpleScheduledTask.Config.class);
-        when(config.myParameter()).thenReturn("parameter value");
+        //when(config.myParameter()).thenReturn("parameter value");
 
         fixture.activate(config);
         fixture.run();

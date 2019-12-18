@@ -1,14 +1,10 @@
 package com.hcl.ecomm.core.servlets;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
@@ -18,6 +14,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonArray;
 import com.hcl.ecomm.core.services.ProductService;
 
 @Component(service = Servlet.class, property = { "sling.servlet.paths=/bin/hclecomm/products",
@@ -33,10 +30,13 @@ public class ProductServlet extends SlingSafeMethodsServlet {
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 
-		LOG.info("inside doGET method");
+		LOG.info("inside ProductServlet doGET method");
+		
+		JsonArray responseStream = productService.getAllProductDetails();
 
-		String responseStream = productService.getProductDetails(request, response);
-		response.getWriter().append(responseStream);
+		
+
+		response.getWriter().append(responseStream.toString());
 
 		/*
 		 * URL url = new URL(productUrl); HttpURLConnection conn =

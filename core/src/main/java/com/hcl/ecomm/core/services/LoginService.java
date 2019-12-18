@@ -9,4 +9,6 @@ public interface LoginService {
 	public String getUsername();
 	
 	public String getPassword();
+	
+	public String getToken();
 }

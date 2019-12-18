@@ -1,7 +1,11 @@
 package com.hcl.ecomm.core.services;
 
+import java.util.List;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+
+import com.google.gson.JsonArray;
 
 public interface ProductService {
 
@@ -13,5 +17,9 @@ public interface ProductService {
 	
 	public String getSearchCriteriaValue();
 	
-	public String getProductDetails(SlingHttpServletRequest request, SlingHttpServletResponse response);
+	public JsonArray getAllProductDetails();
+	
+	public List<String> getAllProductSkus(JsonArray productJson);
+	
+	public JsonArray getProductDetail(String sku);
 }
