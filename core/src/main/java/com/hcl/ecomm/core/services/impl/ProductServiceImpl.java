@@ -1,19 +1,13 @@
 package com.hcl.ecomm.core.services.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.SlingHttpServletResponse;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -26,7 +20,6 @@ import com.google.gson.JsonElement;
 import com.hcl.ecomm.core.config.ProductServiceConfig;
 import com.hcl.ecomm.core.services.LoginService;
 import com.hcl.ecomm.core.services.ProductService;
-import com.hcl.ecomm.core.utility.ProductUtility;
 
 @Component(immediate = true, enabled = true, service = ProductService.class)
 @Designate(ocd = ProductServiceConfig.class)
@@ -135,12 +128,16 @@ public class ProductServiceImpl implements ProductService {
 		String token = loginService.getToken();
 		String domainName = getDomainName();
 		String servicePath = getServicePath();
-		String searchCriteriaField = "SKU";
-		String searchCriteriaValue = sku;
+		String searchFirstCriteriaField = getSearchCriteriaField();
+		String searchFirstCriteriaValue = getSearchCriteriaValue();
+		String searchSecondCriteriaField = "SKU";
+		String searchSecondCriteriaValue = sku;
 
 		String productUrl = scheme + "://" + domainName + servicePath
-				+ "?searchCriteria[filterGroups][0][filters][0][field]=" + searchCriteriaField
-				+ "&searchCriteria[filterGroups][0][filters][0][value]=" + searchCriteriaValue;
+				+ "?searchCriteria[filterGroups][0][filters][0][field]=" + searchFirstCriteriaField
+				+ "&searchCriteria[filterGroups][0][filters][0][value]=" + searchFirstCriteriaValue
+				+ "&searchCriteria[filterGroups][0][filters][1][field]=" + searchSecondCriteriaField
+				+ "&searchCriteria[filterGroups][0][filters][1][value]=" + searchSecondCriteriaValue;
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet httpGet = new HttpGet(productUrl);

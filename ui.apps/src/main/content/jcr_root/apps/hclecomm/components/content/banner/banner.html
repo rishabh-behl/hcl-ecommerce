@@ -1,14 +1,18 @@
-<div class="" id="home-content">
-        <div class="wide-cta-1 short pink">
-            <div class="img-product">
-                <a title="Shop New!" href="https://www.hcltech.com">
-                  <img src="/content/dam/hclecomm/SEP-ProductOverview.svg" alt="">
-                </a>
-            </div>
-            <div class="copy-wrap">
-                <h1>The New Products</h1>
-                <p>djfsif dfjiasdf  sdflkasjfs dfjisfsji asdauf fsifweif dfeifwei.</p>
-                <p><a class="button hoverEffects" href="https://www.blissworld.com/face-serums/">Shop Now</a></p>
-            </div>
-        </div>
-      </div>
+<div data-sly-use.banner= "com.hcl.ecomm.core.models.BannerModel" >
+	<div data-sly-test.hashMap="${banner.productMap}" data-sly-unwrap>
+		<div class="" id="home-content">
+			<div class="wide-cta-1 short pink">
+				<div class="img-product">
+					<a title="Shop New!" href="https://www.hcltech.com">
+					<img src="/content/dam/hclecomm/SEP-ProductOverview.svg" alt="">
+					</a>
+				</div>
+				<div class="copy-wrap" data-product-sku="${properties.productSku}" >				
+						<h1>${hashMap['name']}</h1>
+						<p></p>
+						<p><a class="button hoverEffects" href="https://www.blissworld.com/face-serums/">Shop Now</a></p>
+				</div>
+			</div>				
+		</div>
+	</div>
+</div>

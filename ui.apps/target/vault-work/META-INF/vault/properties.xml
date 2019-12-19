@@ -2,11 +2,11 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>hclecomm - UI apps</comment>
-<entry key="createdBy">DeepaliA</entry>
+<entry key="createdBy">ShubhamM</entry>
 <entry key="allowIndexDefinitions">false</entry>
 <entry key="name">hclecomm.ui.apps</entry>
 <entry key="acHandling">merge</entry>
-<entry key="created">2019-12-13T15:51:14.151+05:30</entry>
+<entry key="created">2019-12-19T15:30:53.183+05:30</entry>
 <entry key="groupId">com.hcl.ecomm</entry>
 <entry key="version">1.0-SNAPSHOT</entry>
 <entry key="packageType">application</entry>

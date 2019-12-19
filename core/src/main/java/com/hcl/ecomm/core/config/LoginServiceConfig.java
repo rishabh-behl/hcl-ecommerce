@@ -9,7 +9,7 @@ public @interface LoginServiceConfig {
 	String servicePathDefaultValue = "/V1/integration/admin/token";
 	String domainNameDefaultValue = "localhost:8081/magento/rest";
 	String userNameDefaultValue = "admin";
-	String passwordDefaultValue = "Admin123";
+	String passwordDefaultValue = "Admin1234";
 
 	@AttributeDefinition(name = "DOMAIN_NAME", description = "This is domain name", defaultValue = {domainNameDefaultValue} )
 	String loginservice_domainName_string() default domainNameDefaultValue;
