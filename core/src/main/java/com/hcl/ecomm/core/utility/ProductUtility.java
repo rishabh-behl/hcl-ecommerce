@@ -1,16 +1,23 @@
 package com.hcl.ecomm.core.utility;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class ProductUtility {
+
+	private static final Logger LOG = LoggerFactory.getLogger(ProductUtility.class);
 
 	public static JsonArray fromStringToJsonArray(String responseStream) {
 
@@ -21,7 +28,6 @@ public class ProductUtility {
 		} else {
 			j_array = jobj.getAsJsonArray();
 		}
-
 		return j_array;
 	}
 
@@ -32,12 +38,16 @@ public class ProductUtility {
 		try {
 
 			JsonObject productObject = productJsonArray.get(0).getAsJsonObject();
-			Set<String> keys = productObject.keySet();
-
-			for (String key : keys) {
-				productMap.put(key, productObject.get(key).getAsString());
+			if (!productObject.isJsonNull()) {
+				Set<String> keys = productObject.keySet();
+				productMap.put("description", getDescription(productObject));
+				productMap.put("categoryId", getProductCategoryId(productObject).toString());
+				for (String key : keys) {
+					productMap.put(key, productObject.get(key).getAsString());
+				}
 			}
 		} catch (Exception e) {
+			LOG.error("Caught exception : " + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -54,7 +64,33 @@ public class ProductUtility {
 			productMap = fromJsonArrayToMap(jel.getAsJsonArray());
 			productList.add(productMap);
 		}
-
 		return productList;
+	}
+
+	public static String getDescription(JsonObject productObject) {
+		String description = null;
+
+		JsonArray j_array = productObject.get("custom_attributes").getAsJsonArray();
+
+		for (JsonElement el : j_array) {
+			String attribute = el.getAsJsonObject().get("attribute_code").getAsString();
+			if ("description".equalsIgnoreCase(attribute)) {
+				description = el.getAsJsonObject().get("value").getAsString();
+			}
+		}
+		return description;
+	}
+
+	public static List<Integer> getProductCategoryId(JsonObject productObject) {
+		List<Integer> categoryList = new ArrayList<Integer>();
+
+		JsonArray j_array = productObject.get("extension_attributes").getAsJsonObject().get("category_links")
+				.getAsJsonArray();
+
+		for (int i = 0; i < j_array.size(); i++) {
+			int id = j_array.get(i).getAsJsonObject().get("category_id").getAsInt();
+			categoryList.add(id);
+		}
+		return categoryList;
 	}
 }

@@ -17,35 +17,35 @@ import org.slf4j.LoggerFactory;
 import com.hcl.ecomm.core.config.LoginServiceConfig;
 import com.hcl.ecomm.core.services.LoginService;
 
-
-
-
-@Component(service = {LoginService.class})
+@Component(service = { LoginService.class })
 @Designate(ocd = LoginServiceConfig.class)
 
 @ServiceDescription("Login service")
 @ServiceRanking(1001)
 @ServiceVendor("Shubham Mittal")
 
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(LoginServiceImpl.class);	
-	
-	 @Activate
-	 private LoginServiceConfig config;
+	private static final Logger LOG = LoggerFactory.getLogger(LoginServiceImpl.class);
+
+	@Activate
+	private LoginServiceConfig config;
 
 	@Override
-	public String getDomainName() {		
+	public String getDomainName() {
 		return this.config.loginservice_domainName_string();
 	}
+
 	@Override
 	public String getServicePath() {
 		return this.config.loginservice_servicePath_string();
 	}
+
 	@Override
 	public String getUsername() {
 		return this.config.loginservice_username_string();
 	}
+
 	@Override
 	public String getPassword() {
 		return this.config.loginservice_password_string();
@@ -56,7 +56,7 @@ public class LoginServiceImpl implements LoginService{
 
 		String scheme = "http";
 		String token = null;
-		
+
 		String domainName = getDomainName();
 		String servicePath = getServicePath();
 		String username = getUsername();
@@ -72,14 +72,14 @@ public class LoginServiceImpl implements LoginService{
 			CloseableHttpClient httpClient = HttpClients.createDefault();
 
 			HttpPost httppost = new HttpPost(url);
-			LOG.info("httPut : "+httppost);
+			LOG.info("httPut : " + httppost);
 			CloseableHttpResponse httpResponse = httpClient.execute(httppost);
-			LOG.info("httpResponse : " +httpResponse);
+			LOG.info("httpResponse : " + httpResponse);
 			token = EntityUtils.toString(httpResponse.getEntity());
 			LOG.info("Response Token : " + token);
 
 		} catch (Exception e) {
-			LOG.error("getToken method caught an exception "+e.getMessage());
+			LOG.error("getToken method caught an exception " + e.getMessage());
 			e.printStackTrace();
 
 		}

@@ -17,15 +17,15 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonArray;
 import com.hcl.ecomm.core.services.ProductService;
-import com.hcl.ecomm.core.services.impl.ProductUtility;
+import com.hcl.ecomm.core.utility.ProductUtility;
 
-
-@Model(adaptables = Resource.class) 
+@Model(adaptables = Resource.class)
 public class BannerModel {
 
 	private static final Logger LOG = LoggerFactory.getLogger(BannerModel.class);
-	
-	@Inject @Default(values="24-MB02")
+
+	@Inject
+	@Default(values = "24-MB02")
 	private String productSku;
 
 	public String getProductSku() {
@@ -39,19 +39,18 @@ public class BannerModel {
 
 	@PostConstruct
 	protected void init() {
-		try{
+		try {
 			LOG.info("inside init() method");
 			JsonArray productJsonArray = productService.getProductDetail(productSku);
 			productMap = ProductUtility.fromJsonArrayToMap(productJsonArray);
-		}catch(Exception e){
-			LOG.error("Exception caught in init() method : "+e.getMessage());
+
+		} catch (Exception e) {
+			LOG.error("Exception caught in init() method : " + e.getMessage());
 			e.printStackTrace();
 		}
-		
 	}
 
 	public Map<String, String> getProductMap() {
-		
 		return productMap;
 	}
 

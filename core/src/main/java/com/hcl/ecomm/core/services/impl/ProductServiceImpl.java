@@ -20,6 +20,7 @@ import com.google.gson.JsonElement;
 import com.hcl.ecomm.core.config.ProductServiceConfig;
 import com.hcl.ecomm.core.services.LoginService;
 import com.hcl.ecomm.core.services.ProductService;
+import com.hcl.ecomm.core.utility.ProductUtility;
 
 @Component(immediate = true, enabled = true, service = ProductService.class)
 @Designate(ocd = ProductServiceConfig.class)
@@ -32,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
 
 	String scheme = "http";
 	String responseStream = null;
-	JsonArray productJsonArray = null;	
+	JsonArray productJsonArray = null;
 
 	@Activate
 	private ProductServiceConfig config;
@@ -49,19 +50,16 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public String getServicePath() {
-		// TODO Auto-generated method stub
 		return config.productService_servicePath();
 	}
 
 	@Override
 	public String getSearchCriteriaField() {
-		// TODO Auto-generated method stub
 		return config.productService_searchCriteriaField();
 	}
 
 	@Override
 	public String getSearchCriteriaValue() {
-		// TODO Auto-generated method stub
 		return config.productService_searchCriteriaValue();
 	}
 
@@ -167,7 +165,5 @@ public class ProductServiceImpl implements ProductService {
 
 		return productJsonArray;
 	}
-
-	
 
 }
