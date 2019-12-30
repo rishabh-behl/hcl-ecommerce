@@ -21,7 +21,7 @@ public class ProductUtility {
 
 	public static JsonArray fromStringToJsonArray(String responseStream) {
 
-		JsonArray j_array = null;
+		JsonArray j_array;
 		JsonObject jobj = new Gson().fromJson(responseStream, JsonObject.class);
 		if (jobj.has("items")) {
 			j_array = jobj.getAsJsonArray("items");
@@ -56,18 +56,16 @@ public class ProductUtility {
 
 	public static List<Map<String, String>> fromJsonArrayToList(JsonArray productJsonArray) {
 
-		List<Map<String, String>> productList = new LinkedList<Map<String, String>>();
+		List<Map<String, String>> productList = new LinkedList<>();
 
 		for (JsonElement jel : productJsonArray) {
-			Map<String, String> productMap = new HashMap<>();
-
-			productMap = fromJsonArrayToMap(jel.getAsJsonArray());
+			Map<String, String> productMap = fromJsonArrayToMap(jel.getAsJsonArray());
 			productList.add(productMap);
 		}
 		return productList;
 	}
 
-	public static String getDescription(JsonObject productObject) {
+	private static String getDescription(JsonObject productObject) {
 		String description = null;
 
 		JsonArray j_array = productObject.get("custom_attributes").getAsJsonArray();
@@ -81,8 +79,8 @@ public class ProductUtility {
 		return description;
 	}
 
-	public static List<Integer> getProductCategoryId(JsonObject productObject) {
-		List<Integer> categoryList = new ArrayList<Integer>();
+	private static List<Integer> getProductCategoryId(JsonObject productObject) {
+		List<Integer> categoryList = new ArrayList<>();
 
 		JsonArray j_array = productObject.get("extension_attributes").getAsJsonObject().get("category_links")
 				.getAsJsonArray();
@@ -92,10 +90,5 @@ public class ProductUtility {
 			categoryList.add(id);
 		}
 		return categoryList;
-	}
-	
-	public static void test()
-	{
-
 	}
 }

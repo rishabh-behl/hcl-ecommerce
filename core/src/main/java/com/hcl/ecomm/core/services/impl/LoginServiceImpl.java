@@ -1,5 +1,7 @@
 package com.hcl.ecomm.core.services.impl;
 
+import com.hcl.ecomm.core.config.LoginServiceConfig;
+import com.hcl.ecomm.core.services.LoginService;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -13,9 +15,6 @@ import org.osgi.service.component.propertytypes.ServiceVendor;
 import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.hcl.ecomm.core.config.LoginServiceConfig;
-import com.hcl.ecomm.core.services.LoginService;
 
 @Component(service = { LoginService.class })
 @Designate(ocd = LoginServiceConfig.class)
@@ -33,22 +32,22 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String getDomainName() {
-		return this.config.loginservice_domainName_string();
+		return config.loginservice_domainName_string();
 	}
 
 	@Override
 	public String getServicePath() {
-		return this.config.loginservice_servicePath_string();
+		return config.loginservice_servicePath_string();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.config.loginservice_username_string();
+		return config.loginservice_username_string();
 	}
 
 	@Override
 	public String getPassword() {
-		return this.config.loginservice_password_string();
+		return config.loginservice_password_string();
 	}
 
 	@Override
