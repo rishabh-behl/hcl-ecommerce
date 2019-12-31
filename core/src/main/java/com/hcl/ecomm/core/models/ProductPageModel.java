@@ -1,6 +1,7 @@
 package com.hcl.ecomm.core.models;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +20,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hcl.ecomm.core.services.ProductService;
 import com.hcl.ecomm.core.services.impl.ProductServiceImpl;
+import com.hcl.ecomm.core.utility.ProductUtility;
 
-@Model(adaptables ={ Resource.class, SlingHttpServletRequest.class, SlingHttpServletResponse.class})
+@Model(adaptables ={ Resource.class, SlingHttpServletRequest.class})
 public class ProductPageModel {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ProductServiceImpl.class);
@@ -30,44 +33,28 @@ public class ProductPageModel {
 	@Inject
 	SlingHttpServletRequest slingRequest;
 	
-	@Inject
-	SlingHttpServletResponse slingResponse;
-	
-	private HashMap<String, String> productMap;
+	private Map<String, String> productMap;
 	
 	@PostConstruct
 	protected void init()
 	{
+		LOG.info("Inside ProductPageModel init() method"); 
 		try{
-			//productService.getProductDetails(slingRequest, slingResponse);
-			JsonArray productArray = new JsonArray();
-			String responseStream = "[{\n" +
-                    "\t\t\"name\": 1,\n" +
-                    "\t\t\"price\": \"24-MB01\"\n" +
-                    "\t}]";
-			JsonParser parser = new JsonParser();
-            productArray   = parser.parse(responseStream).getAsJsonArray();
-            //productMap = getProductMap(productArray);
+			String sku = slingRequest.getParameter("pid");
+			LOG.info("Product SKU = " + sku);
+			if(null!=sku && !sku.equals(""))
+			{
+				JsonArray productArray = productService.getProductDetail(sku);
+				productMap = ProductUtility.fromJsonArrayToMap(productArray);
+			}
 		}
 		catch (Exception e) {
-			
+			LOG.info(e.getMessage());
 		}
 	}
-	
-	//public HashMap<String, String> getProductMap(JsonArray productArray)
-	public HashMap<String, String> getProductMap()
-	{
-		HashMap<String, String> productMapp =  new HashMap<>();
-		/*for (int i = 0, size = productArray.size(); i < size; i++)
-		{
-			JsonObject object = productArray.get(i).getAsJsonObject();
-			productMapp.put(object.keySet(), value)
-		}*/
-		productMapp.put("name", "Joset Travel Bag");
-		productMapp.put("price", "25.4");
-		productMapp.put("description", "This bag has all the qualities required for the travel. It has great spcae");
-		return productMapp;
+
+	public Map<String, String> getProductMap() {
+		return productMap;
 	}
-	
-	
+
 }

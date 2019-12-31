@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Implementation-Title: hclecomm - UI apps
 Content-Package-Roots: /apps/hclecomm
 Implementation-Version: 1.0-SNAPSHOT
-Built-By: ShubhamM
+Built-By: DeepaliA
 Implementation-Vendor-Id: com.hcl.ecomm
 Content-Package-Type: application
 Created-By: Apache Maven
